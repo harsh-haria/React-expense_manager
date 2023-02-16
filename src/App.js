@@ -1,10 +1,12 @@
-import ExpenseItem from "./components/ExpenseItem";
+import React from "react";
 
-function App() {
+import Expense from "./components/Expenses";
+
+const App = () => {
   const expenseData = [
     {
       id: "e1",
-      date: new Date(2023, 1, 10),
+      date: new Date(2023, 1, 11),
       amount: 3200,
       title: "Concert Tickets",
     },
@@ -22,21 +24,19 @@ function App() {
     },
   ];
 
-  return (
-    <div>
-      <h1>App.js main div</h1>
-      {expenseData.map((item) => {
-        return (
-          <ExpenseItem
-            date={item.date}
-            title={item.title}
-            amount={item.amount}
-            id={item.id}
-          />
-        );
-      })}
-    </div>
+  // return (
+  //   <div className="ExpenseItems">
+  //     <h1>App.js main div</h1>
+  //     <Expense data={expenseData} />
+  //   </div>
+  // );
+  //both the ways work. the syntax below is old syntax which was used before jsx was introduced.
+  return React.createElement(
+    "div",
+    {},
+    React.createElement("h2", {}, "2App.js main div"),
+    React.createElement(Expense, { data: expenseData })
   );
-}
+};
 
 export default App;
