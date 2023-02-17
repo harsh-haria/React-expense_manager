@@ -1,5 +1,7 @@
 import React from "react";
 
+import NewExpense from "./NewExpense/NewExpense";
+
 import Expense from "./components/Expenses";
 
 const App = () => {
@@ -24,19 +26,19 @@ const App = () => {
     },
   ];
 
-  // return (
-  //   <div className="ExpenseItems">
-  //     <h1>App.js main div</h1>
-  //     <Expense data={expenseData} />
-  //   </div>
-  // );
-  //both the ways work. the syntax below is old syntax which was used before jsx was introduced.
-  return React.createElement(
-    "div",
-    {},
-    React.createElement("h2", {}, "2App.js main div"),
-    React.createElement(Expense, { data: expenseData })
+  return (
+    <div className="ExpenseItems">
+      <NewExpense />
+      <Expense data={expenseData} />
+    </div>
   );
+  //both the ways work. the syntax below is old syntax which was used before jsx was introduced.
+  // return React.createElement(
+  //   "div",
+  //   {},
+  //   React.createElement("h2", {}, "2App.js main div"),
+  //   React.createElement(Expense, { data: expenseData })
+  // );
 };
 
 export default App;
