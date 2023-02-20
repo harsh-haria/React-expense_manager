@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
+	//these individual states can be also combined into a single state with the use of object(key-value);
 	const [enteredTitle, setEnteredTitle] = useState("");
 	const [enteredDate, setenteredDate] = useState("");
-	const [enteredAmount, setenteredAmount] = useState(0);
+	const [enteredAmount, setenteredAmount] = useState(""); //even if a number it is still read as string
 
 	const titleChangeHandler = (event) => {
 		setEnteredTitle(event.target.value);
@@ -19,11 +20,20 @@ const ExpenseForm = () => {
 		setenteredAmount(event.target.value);
 	};
 
-	const printStateValues = () => {
-		console.log(enteredTitle, enteredDate, enteredAmount);
+	const printStateValues = (event) => {
+		event.preventDefault();
+		const expenseData = {
+			title: enteredTitle,
+			amount: enteredAmount,
+			date: enteredDate,
+		};
+		console.log(expenseData);
+		setEnteredTitle("");
+		setenteredAmount("");
+		setenteredDate("");
 	};
 	return (
-		<form>
+		<form onSubmit={printStateValues}>
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<label>Title</label>
@@ -39,7 +49,8 @@ const ExpenseForm = () => {
 						type="number"
 						min="0.01"
 						step="0.01"
-						onChange={dateChangeHandler}
+						onChange={amountChangeHandler}
+						value={enteredAmount}
 					/>
 				</div>
 				<div className="new-expense__control">
@@ -48,14 +59,13 @@ const ExpenseForm = () => {
 						type="date"
 						min="2023-01-01"
 						max="20223-12-31"
-						onChange={amountChangeHandler}
+						value={enteredDate}
+						onChange={dateChangeHandler}
 					/>
 				</div>
 			</div>
 			<div className="new-expense__actions">
-				<button type="submit" onClick={printStateValues}>
-					Add Expense
-				</button>
+				<button type="submit">Add Expense</button>
 			</div>
 		</form>
 	);
