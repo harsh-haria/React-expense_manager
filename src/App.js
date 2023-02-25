@@ -31,9 +31,7 @@ const App = (props) => {
   const onAddExpense = (expense) => {
     // console.log(expenseData);
     setExpenses((prevExpenses) => {
-      const returner = [expense, ...prevExpenses];
-      console.log(returner);
-      return returner;
+      return [expense, ...prevExpenses];
     });
   };
 
