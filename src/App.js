@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 
 import NewExpense from "./NewExpense/NewExpense";
 
 import Expense from "./components/Expenses";
 
-const App = (props) => {
-  const expenseData = [
-    {
-      id: "e1",
-      date: new Date(2023, 1, 11),
-      amount: 3200,
-      title: "Concert Tickets",
-    },
-    {
-      id: "e2",
-      date: new Date(2023, 1, 14),
-      amount: 260,
-      title: "Lunch",
-    },
-    {
-      id: "e3",
-      date: new Date(2023, 1, 13),
-      amount: 5000,
-      title: "Gift box",
-    },
-  ];
+const DUMMY_EXPENSES = [
+  {
+    id: "e1",
+    date: new Date(2023, 1, 11),
+    amount: 3200,
+    title: "Concert Tickets",
+  },
+  {
+    id: "e2",
+    date: new Date(2023, 1, 14),
+    amount: 260,
+    title: "Lunch",
+  },
+  {
+    id: "e3",
+    date: new Date(2023, 1, 13),
+    amount: 5000,
+    title: "Gift box",
+  },
+];
 
-  const onAddExpense = (expenseData) => {
-    console.log("from App.js");
-    console.log(expenseData);
+const App = (props) => {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  const onAddExpense = (expense) => {
+    // console.log(expenseData);
+    setExpenses((prevExpenses) => {
+      const returner = [expense, ...prevExpenses];
+      console.log(returner);
+      return returner;
+    });
   };
 
   return (
     <div className="ExpenseItems">
       <NewExpense addExpenseHandler={onAddExpense} />
-      <Expense data={expenseData} />
+      <Expense data={expenses} />
     </div>
   );
   //both the ways work. the syntax below is old syntax which was used before jsx was introduced.
