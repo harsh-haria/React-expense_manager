@@ -26,7 +26,7 @@ const ExpenseForm = (props) => {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
-    }; 
+    };
     // console.log(expenseData);
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
@@ -58,8 +58,8 @@ const ExpenseForm = (props) => {
           <label>Date</label>
           <input
             type="date"
-            min="2023-01-01"
-            max="20223-12-31"
+            min="2015-01-01"
+            max="2029-12-31"
             value={enteredDate}
             onChange={dateChangeHandler}
           />
