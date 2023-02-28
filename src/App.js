@@ -23,6 +23,18 @@ const DUMMY_EXPENSES = [
     amount: 5000,
     title: "Gift box",
   },
+  {
+    id: "e4",
+    date: new Date(2023, 4, 11),
+    amount: 3200,
+    title: "Concert Tickets",
+  },
+  {
+    id: "e5",
+    date: new Date(2022, 7, 19),
+    amount: 3200,
+    title: "Concert Tickets",
+  },
 ];
 
 const App = (props) => {
